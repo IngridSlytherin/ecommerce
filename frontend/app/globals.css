@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand: 14 116 144;
+  --accent: 234 88 12;
+  --ink: 23 23 23;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: rgb(var(--ink));
+  background: #f7f8f5;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.surface {
+  border: 1px solid rgb(15 23 42 / 0.08);
+  background: rgb(255 255 255 / 0.92);
+  box-shadow: 0 10px 30px rgb(15 23 42 / 0.06);
+}
