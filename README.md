@@ -1,30 +1,49 @@
-# Ecommerce White Label Platform
+# White-Label E-commerce Platform
 
-Plataforma inicial de e-commerce White Label com loja pública, assistente de instalação, checkout sandbox, painel administrativo, temas, marketing, relatórios e dados de demonstração.
+A white-label online store starter: a merchant runs a setup wizard once, and gets a branded storefront, a one-page checkout and an admin dashboard.
+
+> Screenshot: add `docs/storefront.png` and `docs/admin.png` here.
+
+## What it does
+
+- **Setup wizard** (`/install`): store name, brand, domain, shipping, payment methods and theme.
+- **Storefront**: home, category pages, product pages, a persistent cart and a one-page checkout. Includes `sitemap.xml` and `robots.txt` for SEO.
+- **Sandbox payments**: Stripe, Mercado Pago and PayPal flows return a simulated authorization, so the checkout can be tested without real charges.
+- **Admin** (`/admin`): KPIs, charts, orders, products, stock, customers, marketing and reports.
+- **Demo data**: 20 products, 5 categories, 10 customers and 30 orders, so the store looks alive on first run.
 
 ## Stack
 
-- Frontend: Next.js, React 19, TypeScript, Tailwind CSS, Zustand, TanStack Query, Shadcn-style UI.
-- Backend: NestJS, TypeScript, JWT, rate limit e módulos de catálogo, pedidos, pagamentos sandbox, instalação e analytics.
-- Infra: PostgreSQL, Redis e MinIO via Docker Compose.
+| Layer | Technologies |
+| --- | --- |
+| Frontend | Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS, Zustand, TanStack Query |
+| Backend | NestJS 11, TypeScript, JWT, class-validator, rate limiting |
+| Infrastructure | Docker Compose with PostgreSQL, Redis and MinIO |
 
-## Rodando localmente
+## Project structure
+
+```txt
+frontend/   Next.js storefront and admin
+backend/    NestJS API: catalog, orders, payments, installer, analytics, health
+docker-compose.yml
+```
+
+## Running locally
 
 ```bash
 cp .env.example .env
-docker compose up -d
+docker compose up -d     # PostgreSQL, Redis, MinIO
 npm install
-npm run dev
+npm run dev              # frontend + backend together
 ```
 
-Frontend: `http://localhost:3000`
+- Storefront: http://localhost:3000
+- API: http://localhost:3333
 
-Backend: `http://localhost:3333`
+## Status and next steps
 
-## Fluxos implementados nesta base
+This is an early-stage base. The backend currently serves demo data; next steps are persisting catalog and orders in PostgreSQL, real payment provider integrations and automated tests.
 
-- Primeiro acesso em `/install`, com nome da loja, marca, domínio, frete, pagamentos e tema.
-- Loja pública com home, categorias, produto, carrinho persistente e checkout de uma página.
-- Sandbox de pagamento para Mercado Pago, Stripe e PayPal, sem cobrança real.
-- Admin em `/admin` com KPIs, gráficos, pedidos, produtos, estoque, clientes, marketing, relatórios, IA e construtor visual.
-- Dados demo: 20 produtos, 5 categorias, 10 clientes e 30 pedidos fictícios.
+---
+
+Built by [Ingrid Padilha](https://www.linkedin.com/in/ingrid-padilha/).
